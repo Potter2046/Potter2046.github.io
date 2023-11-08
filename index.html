@@ -5,15 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My dear Xuan</title>
 <style>
-  body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-  #timer { font-size: 2em; margin-top: 20px; }
-  h1 { color: #ff79c6; }
+  body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    margin-top: 50px; 
+    background-color: #f3f4f6; /* Light grey background */
+  }
+  #timer { 
+    margin-top: 20px;
+    animation: pulse 1s infinite; /* Pulse animation */
+  }
+  #days, #hours {
+    font-size: 2em; /* Larger font size for days and hours */
+  }
+  #minutes, #seconds {
+    font-size: 1.5em; /* Smaller font size for minutes and seconds */
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  h1 { 
+    color: #ff79c6; /* Pink color for the title */
+    margin-bottom: 0;
+  }
+  img {
+    max-width: 100%; /* Responsive image size */
+    height: auto;
+    margin: 20px 0; /* Margin around the image */
+  }
 </style>
 </head>
 <body>
 
 <h1>My dear Xuan</h1>
-<div id="timer"></div>
+<img src="IMG_02.jpg" alt="A special moment">
+
+<div id="timer">
+  <span id="days"></span>
+  <span id="hours"></span><br> <!-- Line break after hours -->
+  <span id="minutes"></span>
+  <span id="seconds"></span>
+</div>
 
 <script>
 function startTimer() {
@@ -27,9 +61,10 @@ function startTimer() {
     const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((duration % (1000 * 60)) / 1000);
     
-    document.getElementById('timer').innerText = 
-      days + " days " + hours + " hours "
-      + minutes + " minutes " + seconds + " seconds ";
+    document.getElementById('days').innerText = days + " days ";
+    document.getElementById('hours').innerText = hours + " hours ";
+    document.getElementById('minutes').innerText = minutes + " minutes ";
+    document.getElementById('seconds').innerText = seconds + " seconds";
   }
   
   updateTimer(); // Update timer immediately
