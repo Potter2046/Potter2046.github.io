@@ -7,15 +7,22 @@
 <!-- 引入谷歌字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
+  /* 确保html和body占满视口高度 */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   body { 
     font-family: 'Montserrat', sans-serif; 
     text-align: center; 
-    margin: 0; 
-    padding: 0;
     /* 渐变背景 */
     background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
     color: #fff;
-    overflow: hidden;
+    /* 移除overflow:hidden，防止内容被裁剪 */
+    /* overflow: hidden; */
+    position: relative;
   }
   
   h1 { 
@@ -27,22 +34,22 @@
   }
 
   img {
-    max-width: 300px; /* 固定图片大小 */
-    width: 50%;
+    max-width: 400px; /* 增加图片的最大宽度 */
+    width: 70%; /* 调整宽度百分比 */
     height: auto;
     border-radius: 15px;
-    margin: 20px 0; /* 图片周围的边距 */
+    margin: 20px 0; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
 
   #timer { 
     margin-top: 20px;
-    animation: pulse 2s infinite; /* 呼吸动画 */
+    animation: pulse 2s infinite; 
     font-size: 1.5em;
   }
 
   #days {
-    font-size: 2.5em; /* 调整天数的字体大小 */
+    font-size: 2.5em; 
     display: block; 
     margin-bottom: 10px;
   }
@@ -62,6 +69,7 @@
   /* 浮动的心形动画 */
   .heart {
     position: absolute;
+    bottom: -50px; /* 确保心形从屏幕底部开始 */
     width: 20px;
     height: 20px;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ff6b81" viewBox="0 0 32 29.6"><path d="M23.6,0c-3.4,0-6.3,1.9-7.6,4.7C14.7,1.9,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,7.1,10.2,14.3,15.9,21.2c0,0,0.1,0,0.1,0 c5.7-6.9,15.9-14.1,15.9-21.2C31.9,3.8,28.1,0,23.6,0z"/></svg>');
@@ -79,7 +87,7 @@
       opacity: 1;
     }
     100% {
-      transform: translateY(-1000px) rotate(360deg);
+      transform: translateY(-100vh) rotate(360deg); /* 修改为视口高度 */
       opacity: 0;
     }
   }
@@ -125,6 +133,7 @@ function createHearts() {
   heart.classList.add('heart');
   heart.style.left = Math.random() * 100 + 'vw';
   heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+  heart.style.opacity = Math.random();
   document.body.appendChild(heart);
   setTimeout(() => {
     heart.remove();
