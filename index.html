@@ -29,7 +29,7 @@
   }
   
   h1 { 
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
     font-size: 4em;
     color: #fff; 
     margin-top: 20px;
@@ -48,24 +48,24 @@
   #timer { 
     margin-top: 20px;
     animation: pulse 2s infinite; 
-    font-size: 1.5em;
+    font-size: 1.2em; /* 调整计时器字体大小 */
   }
 
   #days {
-    font-size: 2.5em; 
+    font-size: 2em; /* 调整天数的字体大小 */
     display: block; 
     margin-bottom: 10px;
   }
 
   #hours, #minutes, #seconds {
-    font-size: 1.2em; 
+    font-size: 1em; 
     display: inline-block; 
     margin: 0 5px;
   }
 
   @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
   }
 
@@ -103,6 +103,21 @@
     100% {
       transform: translateY(-100vh) rotate(360deg);
       opacity: 0;
+    }
+  }
+
+  /* 媒体查询，针对移动设备调整字体大小 */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.5em; /* 缩小标题字体大小 */
+    }
+
+    #days {
+      font-size: 1.5em; /* 缩小天数字体大小 */
+    }
+
+    #hours, #minutes, #seconds {
+      font-size: 0.9em; /* 缩小计时器字体大小 */
     }
   }
 </style>
